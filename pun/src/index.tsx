@@ -1,5 +1,13 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
-import { View, AppState, Platform, Text, TextInput, Touchable, TouchableOpacity } from 'react-native';
+import {
+  View,
+  AppState,
+  Platform,
+  Text,
+  TextInput,
+  Touchable,
+  TouchableOpacity,
+} from 'react-native';
 import codePush from 'react-native-code-push';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import AsyncStorage from './data/local/AsyncStorage';
@@ -18,11 +26,14 @@ const Index = (props: any) => {
   const [newTheme, setNewTheme] = useState(undefined);
   const [newHeader, setNewHeader] = useState(undefined);
   const [percent, setPercent] = useState<number>(0);
+
   const [Ischange, setChange] = useState(false);
+  const [receivedBytes, setReceivedBytes] = useState(0);
+  const [totalBytes, setTotalBytes] = useState(0);
   const setShowModal = useRef<any>();
 
   useEffect(() => {
-    checkUpdateVersion()
+    checkUpdateVersion();
   }, []);
   useEffect(() => {
     (async () => {
@@ -99,12 +110,14 @@ const Index = (props: any) => {
               break;
 
             case codePush.SyncStatus.UPDATE_INSTALLED:
-              console.log('update thanfh cong ');
+              console.log('update thanh cong ');
               break;
           }
         },
-        ({ receivedBytes, totalBytes }) => {
+        ({ receivedBytes = 0, totalBytes = 0 }) => {
           /* Update download modal progress */
+          setReceivedBytes(receivedBytes)
+          setTotalBytes(totalBytes)
           setPercent(Math.round((receivedBytes / totalBytes) * 100));
         },
       )
@@ -117,10 +130,14 @@ const Index = (props: any) => {
         <PaperProvider>
           <View
             style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>a</Text>
-            <TouchableOpacity onPress={()=>{
-              setShowModal.current.showModal(false);
-            }}><Text>Button</Text></TouchableOpacity>
+            <Text>Hi be Pun, ung dung chua co gi hen tron </Text>
+            <TouchableOpacity
+              onPress={() => {
+                
+              }}>
+              <Text>Hi</Text>
+              
+            </TouchableOpacity>
           </View>
           <ModalProgressComponent
             ref={ref => {
@@ -130,8 +147,8 @@ const Index = (props: any) => {
             percent={percent}
             backdropColor={'rgba(0,0,0,0.5)'}
             backgroundColorModal={'rgba(0,0,0,0.5)'}
-            title={'Pun đang tải ...'}
-            // subTitle={`Please don't turn off the device !!!`}
+            title={`Pun đang tải ... ${percent}% `}
+            subTitle={`Đừng tắt app trong lúc cập nhật !!!`}
             styleTitle={{
               alignSelf: 'flex-start',
               fontSize: 15,
