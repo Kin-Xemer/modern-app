@@ -1,3 +1,89 @@
 {
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": [
+      "es6",
+      "ES2021.String"
+    ],
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react-native",
+    "outDir": "./index.js",
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "@actions/*": [
+        "actions/*"
+      ],
+      "@atoms/*": [
+        "atoms/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@data/*": [
+        "data/*"
+      ],
+      "@models/*": [
+        "models/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@utils": [
+        "utils/index"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@i18n/*": [
+        "i18n/*"
+      ],
+      "@i18n": [
+        "i18n/index"
+      ],
+      "@context/*": [
+        "context/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@epics": [
+        "epics/index"
+      ],
+      "@reducers": [
+        "reducers/index"
+      ],
+      "@screens/*": [
+        "screens/*"
+      ],
+      "@screens": [
+        "screens/index"
+      ],
+      "@hooks": [
+        "hooks/index"
+      ],
+      "@services": [
+        "services/index"
+      ],
+      "@services/*": [
+        "services/*"
+      ]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js",
+    "__tests__"
+  ],
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
