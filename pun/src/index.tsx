@@ -129,8 +129,8 @@ const Index = (props: any) => {
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <PaperProvider>
           <View
-            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Hi be Pun, ung dung chua co gi hen tron </Text>
+            style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:"white" }}>
+            <Text>Hello worl </Text>
             <TouchableOpacity
               onPress={() => {
                 
@@ -147,7 +147,7 @@ const Index = (props: any) => {
             percent={percent}
             backdropColor={'rgba(0,0,0,0.5)'}
             backgroundColorModal={'rgba(0,0,0,0.5)'}
-            title={`Pun đang tải ... ${percent}% `}
+            title={`Đang tải ... ${percent}% `}
             subTitle={`Đừng tắt app trong lúc cập nhật !!!`}
             styleTitle={{
               alignSelf: 'flex-start',
